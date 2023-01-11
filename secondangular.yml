@@ -8,6 +8,7 @@ stages:
   - stage: Build
     displayName: BuildStage
     jobs:
+    - job: Build
       steps:
         - task: NodeTool@0
           displayName: 'Install Node js'
