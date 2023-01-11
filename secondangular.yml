@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- dev
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: NodeTool@0
+  displayName: 'Installing Nod.Js'
+  inputs:
+    versionSpec: '18.x'
+- task: Npm@1
+  displayName: 'Installing NPM'
+  inputs:
+    command: 'install'
+
+- task: 
