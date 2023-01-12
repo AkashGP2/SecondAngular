@@ -37,12 +37,12 @@ stages:
             includeRootFolder: false
             archiveType: zip
             archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-            replaceExistingArchive: true
+            replaceExistingArchive: false
 
         -  task: PublishBuildArtifacts@1
            inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-            ArtifactName: 'drop'
+            ArtifactName: 'Angular-Zip'
             publishLocation: 'Container'
 
 
