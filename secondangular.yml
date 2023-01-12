@@ -28,7 +28,7 @@ stages:
            inputs:
             script: |
               cd SecondAngularApp/
-              ng test --browsers=ChromeHeadless --code-coverage --watch=false
+              ng test 
 
         -  task: ArchiveFiles@2
            displayName: 'Archive files'
