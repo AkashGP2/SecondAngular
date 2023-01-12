@@ -13,10 +13,7 @@ steps:
   displayName: 'Installing NPM'
   inputs:
     command: 'install'
-- task: Npm@1
-  displayName: 'Running CI'
-  inputs:
-    command: 'ci'
+
 - task: Npm@1
   displayName: 'publishing'
   inputs:

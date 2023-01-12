@@ -1,5 +1,5 @@
-#trigger:
-#- dev
+trigger:
+- dev
 
 pool:
   vmImage: ubuntu-latest
@@ -21,7 +21,7 @@ stages:
             npm install
             ng build 
           displayName: 'npm install and build'
-          workingDirectory: '$(Build.SourcesDirectory)'
+         # workingDirectory: '$(Build.SourcesDirectory)'
 
         -  task: CmdLine@2
            displayName: "Run unit tests"
