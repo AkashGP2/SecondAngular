@@ -45,4 +45,15 @@ stages:
             ArtifactName: 'Angular-Zip'
             publishLocation: 'Container'
 
+        -  task: S3Upload@1
+           displayName: 'S3 Upload'
+           inputs:
+            awsCredentials: 'AWS-GPWD-Connection'
+            regionName: 'ap-south-1'
+            bucketName: 'azure-gp-dev'
+            globExpressions: '*.zip'
+            createBucket: false
+
+
+
 
