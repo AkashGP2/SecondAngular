@@ -51,7 +51,7 @@ stages:
             awsCredentials: 'AWS-GPWD-Connection'
             regionName: 'ap-south-1'
             bucketName: 'azure-gp-dev'
-            sourceFolder: '$(Build.ArtifactStagingDirectory)'
+            sourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
             globExpressions: '**'
             createBucket: false
 
