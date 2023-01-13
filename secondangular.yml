@@ -51,7 +51,7 @@ stages:
             awsCredentials: 'AWS-GPWD-Connection'
             regionName: 'ap-south-1'
             bucketName: 'azure-gp-dev'
-            sourceFolder: '$(System.DefaultWorkingDirectory)/dist/'
+            sourceFolder: '$(System.DefaultWorkingDirectory)/dist/second-angular-app'
             globExpressions: '**'
             createBucket: false
 
