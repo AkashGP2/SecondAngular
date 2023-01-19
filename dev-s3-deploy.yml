@@ -1,5 +1,7 @@
 name: Angular Dev Build and S3 Deploy $(Date:yyyyMMdd) $(Rev:r) 
 
+#so only if this is modified it runs?
+
 trigger: 
 -  dev
 
