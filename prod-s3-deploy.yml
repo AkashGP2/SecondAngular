@@ -1,6 +1,7 @@
 name: Angular Dev Build and S3 Deploy $(Date:yyyyMMdd) $(Rev:r)
 
-trigger: none
+trigger: 
+- env1
 
 pool:
   vmImage: ubuntu-latest
