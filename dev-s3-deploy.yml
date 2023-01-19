@@ -1,3 +1,5 @@
+name: Angular Dev Build and S3 Deploy $(Date:yyyyMMdd) $(Rev:r) 
+
 trigger: 
 -  dev
 
