@@ -1,0 +1,54 @@
+name: Angular Prod Build and S3 Deploy $(Date:yyyyMMdd) $(Rev:r)
+
+trigger: 
+-  main
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+-  name: environment
+   displayName: Environment Type
+   type: string
+   default: prod
+   values:
+   - dev
+   - test
+   - prod
+
+stages:
+  - stage: Build
+    displayName: BuildStage
+    jobs:
+    - job: Build
+      steps:
+        - task: NodeTool@0
+          displayName: 'Install Node js'
+          inputs:
+            versionSpec: '18.x'
+        
+        - script: |
+            cd SecondAngularApp/
+            npm install -g @angular/cli
+            npm install
+            ng build 
+          displayName: 'npm install and build'
+         # workingDirectory: '$(Build.SourcesDirectory)'
+
+        -  task: CmdLine@2
+           displayName: "Run unit tests"
+           inputs:
+            script: |
+              cd SecondAngularApp/
+              ng test --browsers=ChromeHeadless --code-coverage --watch=false
+        
+        -  task: S3Upload@1
+           displayName: 'S3 Upload'
+           inputs:
+            awsCredentials: 'AWS-GPWD-Connection'
+            regionName: 'ap-south-1'
+            #bucketName: 'azure-gp-dev'
+            bucketName: '${{parameters.environment}}-s3-wdangular'
+            sourceFolder: '$(System.DefaultWorkingDirectory)/dist/second-angular-app'
+            globExpressions: '**'
+            createBucket: false
